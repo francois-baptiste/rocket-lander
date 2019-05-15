@@ -17,7 +17,7 @@ if __name__ == "__main__":
                 'Initial Force': 'random'}  # (6000, -10000)}
 
     env = RocketLander(settings)
-    s = env.reset()
+    s = env._reset()
 
     from control_and_ai.pid import PID_Benchmark
 
@@ -33,11 +33,11 @@ if __name__ == "__main__":
         while (1):
             a = pid.pid_algorithm(s) # pass the state to the algorithm, get the actions
             # Step through the simulation (1 step). Refer to Simulation Update in constants.py
-            s, r, done, info = env.step(a)
+            s, r, done, info = env._step(a)
             total_reward += r   # Accumulate reward
             # -------------------------------------
             # Optional render
-            env.render()
+            env._render()
             # Draw the target
             env.draw_marker(env.landing_coordinates[0], env.landing_coordinates[1])
             # Refresh render
@@ -54,5 +54,5 @@ if __name__ == "__main__":
             if done:
                 print('Episode:\t{}\tTotal Reward:\t{}'.format(episode, total_reward))
                 total_reward = 0
-                env.reset()
+                env._reset()
                 break

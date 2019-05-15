@@ -83,7 +83,7 @@ class RocketLander(gym.Env):
         self.action_space = [0, 0, 0]       # Main Engine, Nozzle Angle, Left/Right Engine
         self.untransformed_state = [0] * 6  # Non-normalized state
 
-        self.reset()
+        self._reset()
 
     """ INHERITED """
 
@@ -948,7 +948,7 @@ def get_state_sample(samples, normal_state=True, untransformed_state=True):
         f_side = np.random.uniform(-1, 1)
         psi = np.random.uniform(-90 * DEGTORAD, 90 * DEGTORAD)
         action = [f_main, f_side, psi]
-        s, r, done, info = env.step(action)
+        s, r, done, info = env._step(action)
         if normal_state:
             state_samples.append(s)
         else:
