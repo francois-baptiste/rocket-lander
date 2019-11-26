@@ -16,9 +16,9 @@ def plot_trajectory(x, y, *args):
     plt.ylabel("Z-Altitude Difference/metres")
 
 def convert_state_and_plot_trajectory(state_history):
-    test_history = np.matrix(state_history)
+    test_history = np.array(state_history)
     plot_trajectory(test_history[:, 0], test_history[:, 1])
 
 def convert_state_and_plot_trajectory_2(res, fig, axis, state_history):
-    test_history = np.matrix(state_history)
+    test_history = np.array(state_history)
     res.plot_graph(test_history[:, 0], test_history[:, 1], axis)
